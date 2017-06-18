@@ -3,24 +3,24 @@
 
 #define PI 3.141592653
 
-typedef struct Odometrie Odometrie;
+typedef struct Odometry Odometry;
 
-struct Odometrie {
+struct Odometry {
     // Coefficients de conversion
     double COEF_DIST_PAS_PAR_MM; // Coefficient de conversion de nombre de pas en distance (pas/mm)
     double COEF_ROT_PAS_PAR_RAD; // Coefficient de conversion de nombre de pas en radians (pas/rad)
     double COEF_ROT_PAS_PAR_DEG; // Coefficient de conversion de nombre de pas en degres (pas/degres)
 
     // Variables des encodeurs (pas)
-    long encodeurGauche_pas;
-    long encodeurDroit_pas;
+    long encodeurGauche_steps;
+    long encodeurDroit_steps;
 };
 
 // Prototypes des fonctions
-void initOdometrie(long, long, long);
-void calculPositionRobot(void);
-void saisieEncodeurs(void);
-void afficherOdometrie(void);
+void initOdometry(long, long, long);
+void computeRobotPosition(void);
+void getEncodersValues(void);
+void displayOdometry(void);
 double round(double);
 
 #endif

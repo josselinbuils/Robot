@@ -13,22 +13,21 @@
 typedef struct Robot Robot;
 
 struct Robot {
-    // Position du robot (pas)
-    long x_pas;
-    long y_pas;
 
-    // Position du robot (mm)
+    // Robot position
+    long x_steps;
+    long y_steps;
     long x_mm;
     long y_mm;
 
-    // Ditance parcourue par le robot (pas)
-    long ancDist_pas;
-    long dist_pas;
+    // Distance traveled by the robot (pas)
+    long dist_steps;
+    long ancDist_steps;
 
-    // Orientation du robot
-    long orientInit_pas;
-    long ancOrient_pas;
-    long orient_pas;
+    // Robot Orientation
+    long orientInit_steps;
+    long ancOrient_steps;
+    long orient_steps;
     int orient_deg;
 };
 

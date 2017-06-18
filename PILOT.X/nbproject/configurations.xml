@@ -13,10 +13,10 @@
         <itemPath>../Common Files Robot Dev Board/p33FJ128MC804.h</itemPath>
       </logicalFolder>
       <itemPath>pilot hardware setup.h</itemPath>
-      <itemPath>odometrie.h</itemPath>
-      <itemPath>deplacements.h</itemPath>
       <itemPath>robot.h</itemPath>
-      <itemPath>asservissements.h</itemPath>
+      <itemPath>odometry.h</itemPath>
+      <itemPath>moves.h</itemPath>
+      <itemPath>controllers.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f1" displayName="Linker Files" projectFiles="true">
     </logicalFolder>
@@ -32,9 +32,9 @@
       </logicalFolder>
       <itemPath>pilot hardware setup.c</itemPath>
       <itemPath>pilot.c</itemPath>
-      <itemPath>odometrie.c</itemPath>
-      <itemPath>deplacements.c</itemPath>
-      <itemPath>asservissements.c</itemPath>
+      <itemPath>odometry.c</itemPath>
+      <itemPath>moves.c</itemPath>
+      <itemPath>controllers.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -56,8 +56,8 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.23</languageToolchainVersion>
-        <platform>4</platform>
+        <languageToolchainVersion>1.31</languageToolchainVersion>
+        <platform>3</platform>
       </toolsSet>
       <compileType>
         <linkerTool>
@@ -71,6 +71,8 @@
           <parseOnProdLoad>false</parseOnProdLoad>
           <alternateLoadableFile></alternateLoadableFile>
         </loading>
+        <subordinates>
+        </subordinates>
       </compileType>
       <makeCustomizationType>
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
@@ -121,6 +123,7 @@
         <property key="use-iar" value="false"/>
       </C30>
       <C30-AR>
+        <property key="additional-options-chop-files" value="false"/>
       </C30-AR>
       <C30-AS>
         <property key="assembler-symbols" value=""/>
@@ -195,8 +198,6 @@
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
       </C30Global>
-      <PICkit3PlatformTool>
-      </PICkit3PlatformTool>
     </conf>
   </confs>
 </configurationDescriptor>

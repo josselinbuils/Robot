@@ -1,11 +1,3 @@
-/* 
- * File:    pilot hardware setup.h
- * Description :    Définition des ports et initialisation du pilote
- * Project :    Robot Development Board 2013 (version 3.4)
- * Author:      Christopher BUREL
- * Version :    1 février 2013
- */
-
 #ifndef PILOT_HARDWARE_SETUP_H
 #define	PILOT_HARDWARE_SETUP_H
 
@@ -119,8 +111,7 @@
 #define SELECT          _RC3
 #define SETUP_SELECT()  _TRISC3 = 1   // input
 
-// Equipe
-#define EQUIPE SELECT
+#define TEAM SELECT
 
 /* Configurations moteurs (PWM) */
 #define ENABLE_PWM          P1TCONbits.PTEN = 1                         // PWM time base is on
@@ -137,9 +128,7 @@
 #define ENABLE_M2           _LATB13 = 1                                 // débloque moteur 2
 // Vitesse+direction moteur : Xmax/min = +/-PTPER (-2000 recule et 2000 avance 100%, pour 20kHz, 0 arrêt moteur)
 #define SETPOINT_M1(X)      if (X == 0) {BRAKE_M1;} else {PDC1 = _PTPER + (X); ENABLE_M1;}
-#define MOTEUR_GAUCHE(X)    SETPOINT_M1(X)                              // MOTEUR GAUCHE = M1
 #define SETPOINT_M2(X)      if (X == 0) {BRAKE_M2;} else {PDC2 = _PTPER + (X); ENABLE_M2;}
-#define MOTEUR_DROIT(X)     SETPOINT_M2(X)                              // MOTEUR DROIT = M2
 #define SETUP_DUTY_CYCLE()  {_IUE = 1; SETPOINT_M1(0); SETPOINT_M2(0);} // Immediate update of duty cycle enabled,
 #define SETUP_DEAD_TIME()   P1DTCON1bits.DTA = 40                       // dead time 40 TCY = 1µs (recommended for LMD18200)
 
@@ -278,8 +267,6 @@
     #error "PIN 26 not configured"
 #endif
 // End gestion configuration des pins
-
-
 
 /* Prototypes des fonctions */
 

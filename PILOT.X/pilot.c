@@ -1,122 +1,100 @@
-#include "asservissements.h"
-#include "deplacements.h"
-#include "odometrie.h"
+#include "controllers.h"
+#include "moves.h"
+#include "odometry.h"
 #include "pilot hardware setup.h"
 #include "robot.h"
 
-#define ROUGE 0
-#define JAUNE 1
+#define RED 0
+#define YELLOW 1
 
 Robot robot;
 
 int main(void) {
 
-    // Initialise le PILOT
+    // Initialize PILOT
     setup();
 
-    // Initialise toutes les variables du robot pour éviter les problèmes
+    // Initialize robot variables to avoid issues
     robot.x_mm = 0;
-    robot.x_pas = 0;
+    robot.x_steps = 0;
     robot.y_mm = 0;
-    robot.y_pas = 0;
-    robot.ancDist_pas = 0;
-    robot.dist_pas = 0;
-    robot.orientInit_pas = 0;
-    robot.ancOrient_pas = 0;
-    robot.orient_pas = 0;
+    robot.y_steps = 0;
+    robot.ancDist_steps = 0;
+    robot.dist_steps = 0;
+    robot.orientInit_steps = 0;
+    robot.ancOrient_steps = 0;
+    robot.orient_steps = 0;
     robot.orient_deg = 0;
 
-    /* Allume la LED du pilot pendant 100ms */
-
+    // Turn on PILOT LED during 100ms
     LED_ON;
     delay_ms(100);
     LED_OFF;
 
-    /* Attend l'ordre de démarrage du COPILOT */
+    LCD_texte("Wait for COPILOT", 1, 1);
+    LCD_texte("Team:", 3, 1);
 
-    LCD_texte("Attente du COPILOT", 1, 1);
-    LCD_texte("Equipe :", 3, 1);
-
+    // Wait for start command from COPILOT
     while (!START_PILOT) {
-        // Le choix de l'equipe se fait par l'intermediaire du switch SELECT
-        if (EQUIPE == JAUNE) {
-            LCD_texte("Jaune", 3, 16);
+        // Use SELECT switch to choose team
+        if (TEAM == YELLOW) {
+            LCD_texte("Yellow", 3, 16);
         } else {
-            LCD_texte("Rouge", 3, 16);
+            LCD_texte("Red", 3, 16);
         }
     }
 
-    // Initialise l'odométrie
-    initOdometrie(0, 0, 90);
+    initOdometry(0, 0, 90);
 
-    // Initialise la gestion des déplacements   /!\ À faire après avoir initialisé l'odométrie
-    initDeplacements();
+    // Initialize moves management /!\ Have to be done after odometry initialization
+    initMoves();
 
-    // Initialise la gestion des asservissements
-    initAsservissements(0.4, 3.0, 0.35, 5.0); // Paramètres : kp distance, kd distance, kp orientation, kd orientation
+    // Initialize PID controllers
+    initControllers(0.4, 3.0, 0.35, 5.0); // kp distance, kd distance, kp orientation, kd orientation
 
-    // Active le timer de l'interruption principale /!\ Doit être effectuee après l'initialisation de l'odometrie!
+    // Enable main interruption timer /!\ Have to be done after odometry initialization
     T2CONbits.TON = 1;
 
-    /* Déplacements */
+    moveForward(500, 2.0);
+    turn(90);
+    moveForward(500, 2.0);
+    turn(90);
+    moveForward(500, 2.0);
+    turn(90);
+    moveForward(500, 2.0);
+    turn(90);
 
-    avancer(500, 2.0);
-    tourner(90);
-    avancer(1000, 2.0);
-    tourner(-90);
-    avancer(600, 2.0);
-    tourner(-90);
-    avancer(1000, 2.0);
-    tourner(-90);
-    avancer(600, 2.0);
-    tourner(-90);
-    avancer(1000, 2.0);
-    tourner(90);
-    avancer(600, 2.0);
-    tourner(90);
-    avancer(1000, 2.0);
-    tourner(90);
-    avancer(100, 1 .0);
-
-    // Attend
     while (1) {
-        afficherOdometrie();
+        displayOdometry();
     }
 
-    return 1;
+    return 0;
 }
 
-// Interruption principale cadencee a 200Hz
-
+// Main interruption: 200Hz
 void __attribute__((__interrupt__, no_auto_psv)) _T2Interrupt(void) {
 
     if (START_PILOT) {
-        // Efface le registre du TIMER2
+        // Erase TIMER2 register
         TMR2 = 0x00;
 
-        // Met a jour les variables des encodeurs
-        saisieEncodeurs();
+        getEncodersValues();
+        computeRobotPosition();
+        applyControllers();
+        manageMoves();
 
-        // Odometrie
-        calculPositionRobot();
-
-        // Asservit la position du robot (PD)
-        asservir();
-
-        // Détecte l'arrivée
-        gestionDeplacements();
-
-        // Efface le drapeau de l'interruption
+        // Clear interruption flag
         IFS0bits.T2IF = 0;
+
     } else {
-        // Arrete les moteurs
-        MOTEUR_GAUCHE(0);
-        MOTEUR_DROIT(0);
+        // Stop motors
+        BRAKE_M1;
+        BRAKE_M2;
 
-        // Efface le drapeau de l'interruption
+        // Clear interruption flag
         IFS0bits.T2IF = 0;
 
-        // Desactive le timer de l'interruption principale
+        // Stop main interruption timer
         T2CONbits.TON = 0;
     }
 }
