@@ -1,7 +1,7 @@
 #include "controllers.h"
 #include "moves.h"
 #include "odometry.h"
-#include "pilot hardware setup.h"
+#include "setup.h"
 #include "robot.h"
 
 #define RED 0

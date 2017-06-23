@@ -1,8 +1,6 @@
 #ifndef ODOMETRIE_H
 #define	ODOMETRIE_H
 
-#define PI 3.141592653
-
 typedef struct Odometry Odometry;
 
 struct Odometry {
@@ -16,11 +14,9 @@ struct Odometry {
     long encodeurDroit_steps;
 };
 
-// Prototypes des fonctions
 void initOdometry(long, long, long);
-void computeRobotPosition(void);
-void getEncodersValues(void);
-void displayOdometry(void);
-double round(double);
+void computeRobotPosition();
+void getEncodersValues();
+void displayOdometry();
 
 #endif

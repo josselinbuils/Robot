@@ -3,8 +3,8 @@
 #include "controllers.h"
 #include "moves.h"
 #include "odometry.h"
-#include "pilot hardware setup.h"
 #include "robot.h"
+#include "setup.h"
 
 extern PID distController;
 extern PID orientController;

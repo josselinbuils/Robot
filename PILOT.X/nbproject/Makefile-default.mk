@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED="../Common Files Robot Dev Board/analog.c" "../Common Files Robot Dev Board/delay.c" "../Common Files Robot Dev Board/lcd.c" "pilot hardware setup.c" pilot.c odometry.c moves.c controllers.c
+SOURCEFILES_QUOTED_IF_SPACED="../Common Files Robot Dev Board/analog.c" "../Common Files Robot Dev Board/delay.c" "../Common Files Robot Dev Board/lcd.c" pilot.c odometry.c moves.c controllers.c uart.c utils.c setup.c encoders.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o "${OBJECTDIR}/pilot hardware setup.o" ${OBJECTDIR}/pilot.o ${OBJECTDIR}/odometry.o ${OBJECTDIR}/moves.o ${OBJECTDIR}/controllers.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/362702250/analog.o.d ${OBJECTDIR}/_ext/362702250/delay.o.d ${OBJECTDIR}/_ext/362702250/lcd.o.d "${OBJECTDIR}/pilot hardware setup.o.d" ${OBJECTDIR}/pilot.o.d ${OBJECTDIR}/odometry.o.d ${OBJECTDIR}/moves.o.d ${OBJECTDIR}/controllers.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o ${OBJECTDIR}/pilot.o ${OBJECTDIR}/odometry.o ${OBJECTDIR}/moves.o ${OBJECTDIR}/controllers.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/utils.o ${OBJECTDIR}/setup.o ${OBJECTDIR}/encoders.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/362702250/analog.o.d ${OBJECTDIR}/_ext/362702250/delay.o.d ${OBJECTDIR}/_ext/362702250/lcd.o.d ${OBJECTDIR}/pilot.o.d ${OBJECTDIR}/odometry.o.d ${OBJECTDIR}/moves.o.d ${OBJECTDIR}/controllers.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/utils.o.d ${OBJECTDIR}/setup.o.d ${OBJECTDIR}/encoders.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o ${OBJECTDIR}/pilot\ hardware\ setup.o ${OBJECTDIR}/pilot.o ${OBJECTDIR}/odometry.o ${OBJECTDIR}/moves.o ${OBJECTDIR}/controllers.o
+OBJECTFILES=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o ${OBJECTDIR}/pilot.o ${OBJECTDIR}/odometry.o ${OBJECTDIR}/moves.o ${OBJECTDIR}/controllers.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/utils.o ${OBJECTDIR}/setup.o ${OBJECTDIR}/encoders.o
 
 # Source Files
-SOURCEFILES=../Common Files Robot Dev Board/analog.c ../Common Files Robot Dev Board/delay.c ../Common Files Robot Dev Board/lcd.c pilot hardware setup.c pilot.c odometry.c moves.c controllers.c
+SOURCEFILES=../Common Files Robot Dev Board/analog.c ../Common Files Robot Dev Board/delay.c ../Common Files Robot Dev Board/lcd.c pilot.c odometry.c moves.c controllers.c uart.c utils.c setup.c encoders.c
 
 
 CFLAGS=
@@ -115,13 +115,6 @@ ${OBJECTDIR}/_ext/362702250/lcd.o: ../Common\ Files\ Robot\ Dev\ Board/lcd.c  nb
 	${MP_CC} $(MP_EXTRA_CC_PRE)  "../Common Files Robot Dev Board/lcd.c"  -o ${OBJECTDIR}/_ext/362702250/lcd.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/362702250/lcd.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/362702250/lcd.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/pilot\ hardware\ setup.o: pilot\ hardware\ setup.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} "${OBJECTDIR}/pilot hardware setup.o".d 
-	@${RM} "${OBJECTDIR}/pilot hardware setup.o" 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  "pilot hardware setup.c"  -o "${OBJECTDIR}/pilot hardware setup.o"  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pilot hardware setup.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/pilot hardware setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/pilot.o: pilot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/pilot.o.d 
@@ -150,6 +143,34 @@ ${OBJECTDIR}/controllers.o: controllers.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  controllers.c  -o ${OBJECTDIR}/controllers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/controllers.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/controllers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/uart.o: uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/uart.o.d 
+	@${RM} ${OBJECTDIR}/uart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  uart.c  -o ${OBJECTDIR}/uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/uart.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/uart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/utils.o: utils.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/utils.o.d 
+	@${RM} ${OBJECTDIR}/utils.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  utils.c  -o ${OBJECTDIR}/utils.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/utils.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/utils.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/setup.o: setup.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/setup.o.d 
+	@${RM} ${OBJECTDIR}/setup.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  setup.c  -o ${OBJECTDIR}/setup.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/setup.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/encoders.o: encoders.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/encoders.o.d 
+	@${RM} ${OBJECTDIR}/encoders.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  encoders.c  -o ${OBJECTDIR}/encoders.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/encoders.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/encoders.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/_ext/362702250/analog.o: ../Common\ Files\ Robot\ Dev\ Board/analog.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/362702250" 
@@ -171,13 +192,6 @@ ${OBJECTDIR}/_ext/362702250/lcd.o: ../Common\ Files\ Robot\ Dev\ Board/lcd.c  nb
 	@${RM} ${OBJECTDIR}/_ext/362702250/lcd.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  "../Common Files Robot Dev Board/lcd.c"  -o ${OBJECTDIR}/_ext/362702250/lcd.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/362702250/lcd.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/362702250/lcd.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
-${OBJECTDIR}/pilot\ hardware\ setup.o: pilot\ hardware\ setup.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} "${OBJECTDIR}/pilot hardware setup.o".d 
-	@${RM} "${OBJECTDIR}/pilot hardware setup.o" 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  "pilot hardware setup.c"  -o "${OBJECTDIR}/pilot hardware setup.o"  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pilot hardware setup.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/pilot hardware setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/pilot.o: pilot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -206,6 +220,34 @@ ${OBJECTDIR}/controllers.o: controllers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/controllers.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  controllers.c  -o ${OBJECTDIR}/controllers.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/controllers.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/controllers.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/uart.o: uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/uart.o.d 
+	@${RM} ${OBJECTDIR}/uart.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  uart.c  -o ${OBJECTDIR}/uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/uart.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/uart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/utils.o: utils.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/utils.o.d 
+	@${RM} ${OBJECTDIR}/utils.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  utils.c  -o ${OBJECTDIR}/utils.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/utils.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/utils.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/setup.o: setup.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/setup.o.d 
+	@${RM} ${OBJECTDIR}/setup.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  setup.c  -o ${OBJECTDIR}/setup.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/setup.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/encoders.o: encoders.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/encoders.o.d 
+	@${RM} ${OBJECTDIR}/encoders.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  encoders.c  -o ${OBJECTDIR}/encoders.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/encoders.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/encoders.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

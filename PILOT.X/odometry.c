@@ -1,8 +1,10 @@
 #include <math.h>
+#include "encoders.h"
 #include "moves.h"
 #include "odometry.h"
-#include "pilot hardware setup.h"
 #include "robot.h"
+#include "setup.h"
+#include "utils.h"
 
 extern Moves moves;
 extern Robot robot;
@@ -43,8 +45,8 @@ void initOdometry(long x0_mm, long y0_mm, long orientInit_deg) {
 }
 
 // Calcul de la position du robot par approximation lin�aire (Odometry)
-void computeRobotPosition(void) {
-    int dDist_steps, dx_steps, dy_steps, deltaOrient_steps;
+void computeRobotPosition() {
+    long dDist_steps, dx_steps, dy_steps, deltaOrient_steps;
     double orientMoy_rad; // Orientation moyenne du robot entre deux positions (radians)
 
     // Enregiste l'ancienne distance parcourue (pas)
@@ -63,43 +65,35 @@ void computeRobotPosition(void) {
     deltaOrient_steps = robot.orient_steps - robot.ancOrient_steps;
 
     // Calcule l'orientation moyenne (rad)
-    orientMoy_rad = ((double) (robot.ancOrient_steps + robot.orient_steps)) / (2.0 * odometrie.COEF_ROT_PAS_PAR_RAD);
+    orientMoy_rad = (robot.ancOrient_steps + robot.orient_steps) / (2 * odometrie.COEF_ROT_PAS_PAR_RAD);
 
     // Calcule la derivée de la distance parcourue
     dDist_steps = robot.dist_steps - robot.ancDist_steps;
 
     // Calcule les variations de position
-    dx_steps = round(((double) dDist_steps) * cos(orientMoy_rad));
-    dy_steps = round(((double) dDist_steps) * sin(orientMoy_rad));
+    dx_steps = round_long(dDist_steps * cos(orientMoy_rad)); // cos and sin return double
+    dy_steps = round_long(dDist_steps * sin(orientMoy_rad));
 
     // Stocke la nouvelle position
     robot.x_steps += dx_steps;
     robot.y_steps += dy_steps;
 
     // Conversions
-    robot.x_mm = ((double) robot.x_steps) / odometrie.COEF_DIST_PAS_PAR_MM;
-    robot.y_mm = ((double) robot.y_steps) / odometrie.COEF_DIST_PAS_PAR_MM;
-    robot.orient_deg = round(((double) robot.orient_steps) / odometrie.COEF_ROT_PAS_PAR_DEG);
+    robot.x_mm = (long) robot.x_steps / odometrie.COEF_DIST_PAS_PAR_MM;
+    robot.y_mm = (long) robot.y_steps / odometrie.COEF_DIST_PAS_PAR_MM;
+    robot.orient_deg = (int) round_long(robot.orient_steps / odometrie.COEF_ROT_PAS_PAR_DEG);
 }
 
 // Met à jour les variables des encodeurs
-void getEncodersValues(void) {
-    odometrie.encodeurGauche_steps += (POS1CNT - 32768);
-    odometrie.encodeurDroit_steps += (POS2CNT - 32768);
-
-    POS1CNT = 32768;
-    POS2CNT = 32768;
+void getEncodersValues() {
+    odometrie.encodeurGauche_steps += getLeftEncoder();
+    odometrie.encodeurDroit_steps += getRightEncoder();
 }
 
 // Affiche les infos de l'odométrie
-void displayOdometry(void) {
+void displayOdometry() {
     LCD_nombre(1, moves.currentAction);
     LCD_nombre(2, robot.x_mm);
     LCD_nombre(3, robot.y_mm);
     LCD_nombre(4, robot.orient_deg);
-}
-
-// Retourne l'arrondi d'un nombre
-double round(double x) {
-    return (x - ((int) x)) >= 0.5 ? x + 1 : x;
 }
