@@ -24,8 +24,8 @@
         <itemPath>../Common Files Robot Dev Board/delay.c</itemPath>
         <itemPath>../Common Files Robot Dev Board/lcd.c</itemPath>
       </logicalFolder>
-      <itemPath>copilot hardware setup.c</itemPath>
       <itemPath>copilot.c</itemPath>
+      <itemPath>setup.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

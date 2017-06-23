@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED="../Common Files Robot Dev Board/analog.c" "../Common Files Robot Dev Board/delay.c" "../Common Files Robot Dev Board/lcd.c" "copilot hardware setup.c" copilot.c
+SOURCEFILES_QUOTED_IF_SPACED="../Common Files Robot Dev Board/analog.c" "../Common Files Robot Dev Board/delay.c" "../Common Files Robot Dev Board/lcd.c" copilot.c setup.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o "${OBJECTDIR}/copilot hardware setup.o" ${OBJECTDIR}/copilot.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/362702250/analog.o.d ${OBJECTDIR}/_ext/362702250/delay.o.d ${OBJECTDIR}/_ext/362702250/lcd.o.d "${OBJECTDIR}/copilot hardware setup.o.d" ${OBJECTDIR}/copilot.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o ${OBJECTDIR}/copilot.o ${OBJECTDIR}/setup.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/362702250/analog.o.d ${OBJECTDIR}/_ext/362702250/delay.o.d ${OBJECTDIR}/_ext/362702250/lcd.o.d ${OBJECTDIR}/copilot.o.d ${OBJECTDIR}/setup.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o ${OBJECTDIR}/copilot\ hardware\ setup.o ${OBJECTDIR}/copilot.o
+OBJECTFILES=${OBJECTDIR}/_ext/362702250/analog.o ${OBJECTDIR}/_ext/362702250/delay.o ${OBJECTDIR}/_ext/362702250/lcd.o ${OBJECTDIR}/copilot.o ${OBJECTDIR}/setup.o
 
 # Source Files
-SOURCEFILES=../Common Files Robot Dev Board/analog.c ../Common Files Robot Dev Board/delay.c ../Common Files Robot Dev Board/lcd.c copilot hardware setup.c copilot.c
+SOURCEFILES=../Common Files Robot Dev Board/analog.c ../Common Files Robot Dev Board/delay.c ../Common Files Robot Dev Board/lcd.c copilot.c setup.c
 
 
 CFLAGS=
@@ -115,19 +115,19 @@ ${OBJECTDIR}/_ext/362702250/lcd.o: ../Common\ Files\ Robot\ Dev\ Board/lcd.c  nb
 	${MP_CC} $(MP_EXTRA_CC_PRE)  "../Common Files Robot Dev Board/lcd.c"  -o ${OBJECTDIR}/_ext/362702250/lcd.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/362702250/lcd.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/362702250/lcd.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/copilot\ hardware\ setup.o: copilot\ hardware\ setup.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} "${OBJECTDIR}/copilot hardware setup.o".d 
-	@${RM} "${OBJECTDIR}/copilot hardware setup.o" 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  "copilot hardware setup.c"  -o "${OBJECTDIR}/copilot hardware setup.o"  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/copilot hardware setup.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/copilot hardware setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/copilot.o: copilot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/copilot.o.d 
 	@${RM} ${OBJECTDIR}/copilot.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  copilot.c  -o ${OBJECTDIR}/copilot.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/copilot.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/copilot.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/setup.o: setup.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/setup.o.d 
+	@${RM} ${OBJECTDIR}/setup.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  setup.c  -o ${OBJECTDIR}/setup.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/setup.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/_ext/362702250/analog.o: ../Common\ Files\ Robot\ Dev\ Board/analog.c  nbproject/Makefile-${CND_CONF}.mk
@@ -151,19 +151,19 @@ ${OBJECTDIR}/_ext/362702250/lcd.o: ../Common\ Files\ Robot\ Dev\ Board/lcd.c  nb
 	${MP_CC} $(MP_EXTRA_CC_PRE)  "../Common Files Robot Dev Board/lcd.c"  -o ${OBJECTDIR}/_ext/362702250/lcd.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/362702250/lcd.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/362702250/lcd.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
-${OBJECTDIR}/copilot\ hardware\ setup.o: copilot\ hardware\ setup.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} "${OBJECTDIR}/copilot hardware setup.o".d 
-	@${RM} "${OBJECTDIR}/copilot hardware setup.o" 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  "copilot hardware setup.c"  -o "${OBJECTDIR}/copilot hardware setup.o"  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/copilot hardware setup.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
-	@${FIXDEPS} "${OBJECTDIR}/copilot hardware setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
-	
 ${OBJECTDIR}/copilot.o: copilot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/copilot.o.d 
 	@${RM} ${OBJECTDIR}/copilot.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  copilot.c  -o ${OBJECTDIR}/copilot.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/copilot.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/copilot.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/setup.o: setup.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/setup.o.d 
+	@${RM} ${OBJECTDIR}/setup.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  setup.c  -o ${OBJECTDIR}/setup.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/setup.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/setup.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

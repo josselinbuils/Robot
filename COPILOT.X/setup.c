@@ -1,18 +1,9 @@
-/*
- * File:            copilot hardware setup.c
- * Description :    Définition des ports et initialisation du COPILOT
- * Project :        Coupe de France de Robotique 2015
- * Author:          Christopher BUREL, Josselin BUILS
- * Version :        20 juillet 2014
- */
-
 #include "setup.h"
 
 /* Configuration bits */
 _FOSCSEL( FNOSC_PRIPLL )    // Primary oscillator (XT, HS, EC) w/ PLL
 _FOSC( POSCMD_XT )          // XT oscillator
 _FWDT( FWDTEN_OFF )         // Watchdog Timer disabled
-
 
 // Séquence d'initialisation (Attention à l'ordre d'exécution!)
 void setup(void)
