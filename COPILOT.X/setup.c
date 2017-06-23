@@ -6,7 +6,7 @@
  * Version :        20 juillet 2014
  */
 
-#include "copilot hardware setup.h"
+#include "setup.h"
 
 /* Configuration bits */
 _FOSCSEL( FNOSC_PRIPLL )    // Primary oscillator (XT, HS, EC) w/ PLL

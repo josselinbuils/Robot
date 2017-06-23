@@ -1,15 +1,7 @@
-/* 
- * File:            copilot hardware setup.h
- * Description :    Définition des ports et initialisation du copilote
- * Project :        Robot Development Board 2013 (version 3.4)
- * Author:          Christopher BUREL
- * Version :        31 janvier 2013
- */
+#ifndef SETUP_H
+#define	SETUP_H
 
-#ifndef COPILOT_HARDWARE_SETUP_H
-#define	COPILOT_HARDWARE_SETUP_H
-
-/* Include all header files here, just include "copilot hardware setup.h" in other files */
+// Include all header files here, just include "copilot hardware setup.h" in other files
 #include "../Common Files Robot Dev Board/p33FJ128MC804.h"
 #include "../Common Files Robot Dev Board/analog.h"
 #include "../Common Files Robot Dev Board/delay.h"
@@ -34,7 +26,6 @@
 #define PIN_24
 #define PIN_25
 #define PIN_26
-
 
 /********* Configurations des pins ***************
  * Nommer la pin (facultatif, la pin est nommer PIN_x par défaut)
@@ -249,11 +240,6 @@
 #endif
 // End gestion configuration des pins
 
-
-
-/* Prototypes des fonctions */
-
 void setup(void);
 
 #endif	/* COPILOT_HARDWARE_SETUP_H */
-
